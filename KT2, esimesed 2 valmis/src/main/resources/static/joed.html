@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+	<title>Jõed</title>
+	<script>
+ 			var connection = new XMLHttpRequest();
+ 			connection.onreadystatechange = dataarrived;
+ 			
+ 			function Joed_Calculations(){
+ 				var jknr = document.getElementById("Järjekorranumber").value;
+ 				var punkt = document.getElementById("Punkt").value;
+ 				connection.open("GET", "/Joed?kaugusSuudmest="+punkt+"&jkNumberJoel="+jknr, true);
+ 				connection.send();
+ 			}
+ 			
+ 			function dataarrived(){
+ 				document.getElementById("Tulemused").innerHTML = connection.responseText;
+ 			}
+ 			
+ 		</script>
+
+</head>
+
+<body>
+	<body>
+ 		<h2>Tulemused</h2>
+ 		<div id="Tulemused"></div>
+ 		
+ 		<h2>Jõgi</h2>
+		<text>Olemas on Kolm jõge - Kala, Suur ja Hallari. Kõigi suudme vahemikud on 30 km.</text>
+		<br></br>
+ 		<label>Punkt Jõel - Sisesta kaugus suudmest</label><br>
+ 		<input type="text" id="Punkt" /><br>
+		<label>Järjekorranumber (1-3)</label><br>
+		<input type="text" id="Järjekorranumber" /><br>
+ 		
+ 		<input type="button" value="Arvuta" onclick="Joed_Calculations()" />
+ 		
+ 
+ 	</body>
+
+</body>
+</html>
